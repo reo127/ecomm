@@ -1,0 +1,25 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+nav #input{
+    width: 45rem;
+}
+nav #serchbtn{
+    position: absolute;
+}
+
+.w-100 {
+    width: 100%!important;
+    height: 14rem;
+}
+
+/* catagori hare */
+.catagori{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+}
+.catagori img{
+    margin-top: 3px;
+    width: 9rem;
+}
