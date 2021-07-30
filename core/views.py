@@ -5,11 +5,10 @@ from django.shortcuts import render, HttpResponse
 def home(request):
     return render(request, 'core/index.html')
 
-def cetagory(request):
-    # return render(request, 'core/cetagory.html')
-    return HttpResponse("working")
+def catagory(request):
+    return render(request, 'core/catagory.html')
 
-def product(request):
+def  product(request):
     return render(request, 'core/product.html')
 
 def belling(request):
@@ -17,5 +16,3 @@ def belling(request):
 
 def search(request):
     return render(request, 'core/search.html')
-    
-    
