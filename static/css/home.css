@@ -4,7 +4,8 @@ nav #input{
     width: 45rem;
 }
 nav #serchbtn{
-    position: absolute;
+    position: relative;
+    right: 5rem;
 }
 
 .w-100 {
