@@ -9,7 +9,9 @@ def home(request):
     return render(request, 'core/index.html', params )
 
 def catagory(request):
-    return render(request, 'core/catagory.html')
+    AllProds = Product.objects.all()
+    params = {"AllProd": AllProds}
+    return render(request, 'core/catagory.html', params )
 
 def  product(request):
     return render(request, 'core/product.html')
