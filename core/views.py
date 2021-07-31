@@ -1,9 +1,12 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'core/index.html')
+    AllProds = Product.objects.all()
+    params = {"AllProd": AllProds}
+    return render(request, 'core/index.html', params )
 
 def catagory(request):
     return render(request, 'core/catagory.html')
