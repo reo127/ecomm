@@ -1,3 +1,4 @@
+from functools import partial
 from django.shortcuts import render
 from .models import Product
 
@@ -17,8 +18,10 @@ def catagory(request, cataNmae):
     return render(request, 'core/catagory.html', params)
 
 
-def product(request):
-    return render(request, 'core/product.html')
+def product(request, sno):
+    product = Product.objects.filter(id=sno)
+    params = {'product': product}
+    return render(request, 'core/product.html', params)
 
 
 def belling(request):
