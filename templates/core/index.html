@@ -39,16 +39,9 @@
 
     <!-- Catagory start hare -->
     <div class="catagori">
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
-        <a href="catagory"><img src="{% static 'images/1.jpg' %}"></a>
+        {% for i in cats %}
+            <a href="catagory/{{i}}"><img src="{% static 'images/1.jpg' %}"><center>{{i}}</center></a>
+        {% endfor %}
     </div>
 
     <!-- Products ariya start hare -->
