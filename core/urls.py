@@ -8,3 +8,4 @@ urlpatterns = [
     path('belling/', views.belling, name="belling"),
     path('search/', views.search, name="search"),
 ]
+
