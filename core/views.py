@@ -45,12 +45,15 @@ def singup(request):
         addres = request.POST['addres']
         phone = request.POST['phone']
         password = request.POST['password']
-        # confromPassword = request.POST['confromPassword']
+        confromPassword = request.POST['confromPassword']
 
-        user = User.objects.create_user(username, email, password)
-        user.home_addres = addres
-        user.phone_number = phone
-        user.save()
+        if password == confromPassword:
+            user = User.objects.create_user(username, email, password)
+            user.home_addres = addres
+            user.phone_number = phone
+            user.save()
+        else:
+            return redirect('/') # Show django massage theare
     else:
         return HttpResponse('This app acpets POST but htis methid is get')
 
