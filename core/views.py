@@ -2,7 +2,8 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Product
 from django.contrib.auth.models import User
-
+from django.contrib.auth  import authenticate, logout
+from django.contrib.auth import login as auth_login
 # Create your views here.
 
 
@@ -39,7 +40,11 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         print(email, password)
-    return HttpResponse('This apps get')
+        loginUser = authenticate(username=email, password= password)
+        if loginUser is not None:
+            auth_login(request, loginUser)
+            return redirect('/')
+    return HttpResponse('Thear is something worng chack the login view')
 
 
 def singup(request):
