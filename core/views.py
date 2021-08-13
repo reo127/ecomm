@@ -67,3 +67,8 @@ def singup(request):
         return HttpResponse('This app acpets POST but htis methid is get')
 
     return redirect('/')
+
+
+def singout(request):
+    logout(request)
+    return redirect('/')

@@ -28,25 +28,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-            </ul>
-          <li><button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#Login">
+             {% if user.is_authenticated == False %}
+          <li>
+            <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#Login">
               Login
-            </button></li>
-          <li><button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#Singup">
-              Register
-            </button></li>
+            </button>
           </li>
           <li>
-            <h3 style="color: white; font-size: 30px;">Cart</h3>
+            <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#Singup">
+              Register
+            </button>
           </li>
+            {% endif %} 
+            {% if user.is_authenticated %}
+          <li>
+            <a href="/singout"><button class="btn btn-danger">Logout</button></a>
+          </li>
+          <li>
+            <h1 style="color:white; font-size:30px;" class="ms-4">Welcome {{user}}</h1>
+          </li>
+            {% endif %}
+          {{user.is_authenticated}}
+
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="input">
