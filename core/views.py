@@ -32,7 +32,12 @@ def belling(request):
 
 
 def search(request):
-    return render(request, 'core/search.html')
+    sq = request.GET.get('quary')
+    allProd = Product.objects.all()
+    print(allProd)
+    params = {'allProd': allProd}
+    print(sq)
+    return render(request, 'core/search.html', params)
 
 
 def login(request):

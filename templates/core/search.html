@@ -1,165 +1,32 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block css %} <link rel="stylesheet" href="{% static 'css/search.css' %}"> {% endblock css %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}"> {% endblock css %}
 {% block title %} Search name hare {% endblock title %}
 {% block body %}
+
 <body>
-   <!-- Products start hare -->
-   <div class="main">
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
+    <!-- Products start hare -->
+    <div class="main">
+        {% for i in allProd %}
+            <a href="#">
+            <div class="product">
+                <img src="/media/{{i.images}}">
+                <div class="Product_details">
+                    <h3 class="ms-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn
+                        jflksagdfg</h3>
+                    <span class="badge bg-secondary">4.8 
+                    <span class="material-icons-outlined"
+                            class="icon">verified</span></span> <span class="prise">{{i.price}}</span>
+                    <br>
+                <h1 class="ms-4">{{i.product_name}}</h1>
+                    <ul>
+                        <li>{{i.desc}}</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       <a href="#">
-        <div class="product">
-            <img src="{% static 'images/1.jpg' %}">
-            <div class="Product_details">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, cupiditate. hlai hfdsn jflksagdfg</h3>
-                <span class="badge bg-secondary">4.8 <span class="material-icons-outlined" class="icon">verified</span></span> <span class="prise">in just $2999</span>
-                <br>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                    <li>Lorem ipsum dolor sit amet, quod veniam, voluptate autem cupiditate atque.</li>
-                </ul>
-            </div>
-        </div>
-       </a>
-       
-   </div>
-{% endblock body %}
+            </a>
+        {% endfor %}
+    </div>
+    {% endblock body %}

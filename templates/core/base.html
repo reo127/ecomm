@@ -51,8 +51,8 @@
           {{user.is_authenticated}}
 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="input">
+        <form class="d-flex" action="/search" method="GET">
+          <input class="form-control me-2" type="search" name="quary" placeholder="Search" aria-label="Search" id="input">
           <button class="btn btn-outline-success" type="submit" id="serchbtn">Search</button>
         </form>
       </div>
