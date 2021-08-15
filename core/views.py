@@ -33,7 +33,7 @@ def belling(request):
 
 def search(request):
     sq = request.GET.get('quary')
-    allProd = Product.objects.all()
+    allProd = Product.objects.filter(product_name=sq)
     print(allProd)
     params = {'allProd': allProd}
     print(sq)
