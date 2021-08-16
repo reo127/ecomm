@@ -4,6 +4,7 @@ from .models import Product
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
+from django.contrib import messages
 # Create your views here.
 
 
@@ -34,9 +35,7 @@ def belling(request):
 def search(request):
     sq = request.GET.get('quary')
     allProd = Product.objects.filter(product_name=sq)
-    print(allProd)
     params = {'allProd': allProd}
-    print(sq)
     return render(request, 'core/search.html', params)
 
 
@@ -44,10 +43,10 @@ def login(request):
     if request.method == "POST":
         email = request.POST['email']
         password = request.POST['password']
-        print(email, password)
         loginUser = authenticate(username=email, password= password)
         if loginUser is not None:
             auth_login(request, loginUser)
+            messages.success(request, "Your Login Sussfuly")
             return redirect('/')
     return HttpResponse('Thear is something worng chack the login view')
 
@@ -66,6 +65,7 @@ def singup(request):
             user.home_addres = addres
             user.phone_number = phone
             user.save()
+            messages.success(request, "Your Singup Succfull now place Login")
         else:
             return redirect('/') # Show django massage theare
     else:
@@ -76,4 +76,5 @@ def singup(request):
 
 def singout(request):
     logout(request)
+    messages.error(request, "Logout Succful")
     return redirect('/')
