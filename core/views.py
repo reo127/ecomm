@@ -28,8 +28,12 @@ def product(request, sno):
     return render(request, 'core/product.html', params)
 
 
-def belling(request):
-    return render(request, 'core/belling.html')
+def belling(request, sno):
+    prod = Product.objects.filter(id=sno)
+    for prod in prod:
+        pass
+    params = {'prod': prod}
+    return render(request, 'core/belling.html', params)
 
 
 def search(request):
