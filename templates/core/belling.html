@@ -36,25 +36,27 @@
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h2 class="mb-3">Billing address</h2>
-                    <form class="needs-validation" novalidate="">
+                    {% csrf_token %}
+                    <form class="needs-validation" action="/orderHandle/{{prod.id}}" method="POST">{% csrf_token %}
+                    {% csrf_token %}
                         <div class="row g-3">
 
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="address"
+                                <input type="text" class="form-control" id="phoneNumber" name="phone"
                                     required="">
                             </div>
                             
                             <div class="col-12">
                                 <label for="address" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="address"
+                                <input type="text" class="form-control" id="UserEmail" name="email"
                                     required="">
                             </div>
                             
                             <div class="col-12">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" 
+                                <input type="text" class="form-control" id="homeAddress" name="address"
                                     required="">
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
@@ -63,33 +65,24 @@
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Land Mark</label>
-                                <input type="text" class="form-control" id="address" 
+                                <input type="text" class="form-control" id="landMark" name="landMark"
                                     required="">
                             </div>
 
                             <div class="col-12">
                                 <label for="address2" class="form-label">Address 2 <span
                                         class="text-muted">(Optional)</span></label>
-                                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" name="address2">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="state" class="form-label">State</label>
-                                <select class="form-select" id="state" required="">
-                                    <option value="">Choose...</option>
-                                    <option>west Bengal</option>
-                                    <option>Bangalure</option>
-                                    <option>kolkata</option>
-                                    <option>klayani</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid state.
-                                </div>
+                                <input type="text" class="form-control" id="state" name="state">
                             </div>
 
                             <div class="col-md-3">
                                 <label for="zip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                <input type="text" class="form-control" id="zip" name="zip" required="">
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -101,39 +94,24 @@
                         <h4 class="mb-3">Payment</h4>
 
                         <div class="my-3">
-                            <div class="form-check">
-                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked=""
+                            <h2>payment Options for you</h2>
+                            <h4>In now days we only have COD so place chose COD</h4>
+                            <ul>
+                                <li>Google pay</li>
+                                <li>Phone pay</li>
+                                <li>Cash on Delevory</li>
+                                <li>Ceadit Card</li>
+                                <li>Dabit Card</li>
+                            </ul>
+                            <div class="col-12">
+                                <label for="payment" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="payment" name="payment"
                                     required="">
-                                <label class="form-check-label" for="credit">Credit card</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="debit">Debit card</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="paypal">PayPal</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="paypal">Phone pay</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="paypal">Google pay</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="paypal">Cash on Delevary</label>
                             </div>
                         </div>
 
-                        <div class="row gy-3">
+                        <!-- Card information and submition from -->
+                        <!-- <div class="row gy-3 cardoption">
                             <div class="col-md-6">
                                 <label for="cc-name" class="form-label">Name on card</label>
                                 <input type="text" class="form-control" id="cc-name" placeholder="" required="">
@@ -166,7 +144,7 @@
                                     Security code required
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <hr class="my-4">
 
@@ -181,3 +159,4 @@
         Place Login to shop and access this page
     {% endif %}
 {% endblock body %}
+

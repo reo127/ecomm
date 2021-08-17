@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product, Orders
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
@@ -42,6 +42,23 @@ def search(request):
     params = {'allProd': allProd}
     return render(request, 'core/search.html', params)
 
+
+def orderHandle(request, sno):
+    if request.method == "POST":
+        product_sno = sno
+        phone = request.POST['phone']
+        email = request.POST['email']
+        address = request.POST['address']
+        landMark = request.POST['landMark']
+        opitonlAddress = request.POST['address2']
+        state = request.POST['state']
+        zip = request.POST['zip']
+        payment = request.POST['payment']
+
+        Orders.objects.create(product_sno=product_sno, phone=phone, email=email, address=address, landMark=landMark, opitonlAddress=opitonlAddress, state=state, zip=zip, payment=payment)
+    messages.success(request, "your Order placed successfully, Thanks to order with us")
+
+    return redirect('/')
 
 def login(request):
     if request.method == "POST":
