@@ -28,7 +28,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             {% if user.is_authenticated == False %}
+          {% if user.is_authenticated == False %}
           <li>
             <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#Login">
               Login
@@ -39,32 +39,39 @@
               Register
             </button>
           </li>
-            {% endif %} 
-            {% if user.is_authenticated %}
+          {% endif %}
+          {% if user.is_authenticated %}
           <li>
-            <a href="/singout"><button class="btn btn-danger">Logout</button></a>
+            <div class="dropdown">
+              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{user|title}}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li> <a href="/singout"><button class="dropdown-item" type="button" style="color: red; font-weight: 900;">Logout</button></a></li>
+                <li><button class="dropdown-item" type="button">Cart ( 0 )</button></li>
+              </ul>
+            </div>
           </li>
-          <li>
-            <h1 style="color:white; font-size:30px;" class="ms-4">Welcome {{user}}</h1>
-          </li>
-            {% endif %}
+          {% endif %}
           {{user.is_authenticated}}
 
         </ul>
         <form class="d-flex" action="/search" method="GET">
-          <input class="form-control me-2" type="search" name="quary" placeholder="Search" aria-label="Search" id="input">
+          <input class="form-control me-2" type="search" name="quary" placeholder="Search" aria-label="Search"
+            id="input">
           <button class="btn btn-outline-success" type="submit" id="serchbtn">Search</button>
         </form>
       </div>
     </div>
   </nav>
 
-       {% for message in messages  %}            
-      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-  <strong>Massage!</strong> {{message}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-      {% endfor %}    
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Massage!</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
 
   <!-- login Modal -->
   <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

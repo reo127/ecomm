@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib import messages
-# Create your views here.
 
 
 def home(request):
