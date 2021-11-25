@@ -1,0 +1,4 @@
+1) Create Cart Functionality
+2) Fix Billing or make Biling realworld usable 
+3) Fix Search Functionality
+4) Search by Catagory name
