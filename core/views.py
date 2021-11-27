@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Product, Orders
+from .models import Product, Orders, Cart
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
@@ -8,12 +8,33 @@ from django.contrib import messages
 
 
 def home(request):
+    if request.method == "POST":
+        prodId = request.POST['prodId']
+        prodName = request.POST['prodName']
+        prodPrice = request.POST['prodPrice']
+        print(prodId, prodPrice, prodName)
+
+
+    # Fech and displaying products staat hare
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
     params = {"AllProd": AllProds, 'cats': cats}
     return render(request, 'core/index.html', params)
 
+
+def cart(request):
+    if request.method == "POST":
+        originalId = request.POST['prodId']
+        product_name = request.POST['prodName']
+        price = request.POST['prodPrice']
+        belongsTo = request.POST['belongsTo']
+
+        print(originalId, price, product_name, belongsTo)
+
+    # Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=belongsTo)
+
+    return render(request, 'core/cart.html')
 
 def catagory(request, cataNmae):
     AllProds = Product.objects.filter(category=cataNmae)
