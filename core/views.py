@@ -8,14 +8,6 @@ from django.contrib import messages
 
 
 def home(request):
-    if request.method == "POST":
-        prodId = request.POST['prodId']
-        prodName = request.POST['prodName']
-        prodPrice = request.POST['prodPrice']
-        print(prodId, prodPrice, prodName)
-
-
-    # Fech and displaying products staat hare
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
@@ -29,12 +21,12 @@ def cart(request):
         product_name = request.POST['prodName']
         price = request.POST['prodPrice']
         belongsTo = request.POST['belongsTo']
+        Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=request.user)
+                 
 
         print(originalId, price, product_name, belongsTo)
 
-    # Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=belongsTo)
-
-    return render(request, 'core/cart.html')
+        return render(request, 'core/cart.html')
 
 def catagory(request, cataNmae):
     AllProds = Product.objects.filter(category=cataNmae)
@@ -58,7 +50,7 @@ def belling(request, sno):
 
 def search(request):
     sq = request.GET.get('quary')
-    allProd = Product.objects.filter(product_name=sq)
+    allProd = Product.objects.filter(product_name__icontains=sq)
     params = {'allProd': allProd}
     return render(request, 'core/search.html', params)
 

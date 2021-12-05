@@ -61,15 +61,17 @@
                         <p class="mt-1">{{products.price}}</p>
                     </div>
                     <a href="product/{{products.id}}"><button class="btn btn-primary my-3">View</button></a>
-                    <form action="/cart/" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="prodId" value="{{products.id}}">
-                        <input type="hidden" name="prodName" value="{{products.product_name}}">
-                        <input type="hidden" name="prodPrice" value="{{products.price}}">
-                        <input type="hidden" name="belongsTo" value="{{user|title}}">
+                    {% if user.is_authenticated %}
+                        <form action="/cart/" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="prodId" value="{{products.id}}">
+                            <input type="hidden" name="prodName" value="{{products.product_name}}">
+                            <input type="hidden" name="prodPrice" value="{{products.price}}">
+                            <input type="hidden" name="belongsTo" value="{{user|title}}">
 
-                        <button type="submit"  class="btn btn-success my-3 ms-4">Add to Cart</button>
-                    </form>
+                            <button type="submit"  class="btn btn-success my-3 ms-4">Add to Cart</button>
+                        </form>
+                    {% endif %}
                 </div>
                 {% endfor %}
                 
