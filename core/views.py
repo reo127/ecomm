@@ -1,10 +1,11 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Product, Orders, Cart
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib import messages
+from django.template import RequestContext
 
 
 def home(request):
@@ -15,18 +16,19 @@ def home(request):
     return render(request, 'core/index.html', params)
 
 
-def cart(request):
+def cartHandle(request):
     if request.method == "POST":
         originalId = request.POST['prodId']
         product_name = request.POST['prodName']
         price = request.POST['prodPrice']
         belongsTo = request.POST['belongsTo']
         Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=request.user)
-                 
-
         print(originalId, price, product_name, belongsTo)
+        messages.success(request, f"{product_name} is added to your cart")
+        return HttpResponseRedirect('/')
 
-        return render(request, 'core/cart.html')
+def cart(request):
+    return render(request, "core/cart.html")
 
 def catagory(request, cataNmae):
     AllProds = Product.objects.filter(category=cataNmae)

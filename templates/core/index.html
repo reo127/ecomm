@@ -62,7 +62,7 @@
                     </div>
                     <a href="product/{{products.id}}"><button class="btn btn-primary my-3">View</button></a>
                     {% if user.is_authenticated %}
-                        <form action="/cart/" method="post">
+                        <form action="/cartHandle/" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="prodId" value="{{products.id}}">
                             <input type="hidden" name="prodName" value="{{products.product_name}}">
