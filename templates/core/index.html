@@ -80,3 +80,9 @@
     </section>
 
 {% endblock body %}
+
+{% block js %}
+<script>
+    localStorage.setItem("lenth", {{cartLenth}});
+</script>
+{% endblock js %}

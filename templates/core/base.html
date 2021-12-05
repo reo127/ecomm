@@ -49,7 +49,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li> <a href="/singout"><button class="dropdown-item" type="button" style="color: red; font-weight: 900;">Logout</button></a></li>
-                <li><a href="http://127.0.0.1:8000/cart/"><button class="dropdown-item" type="button">Cart ( 0 )</button></a></li>
+                <li><a href="http://127.0.0.1:8000/cart/"><button class="dropdown-item" type="button">Cart <p id="cartLen"> 0 </p> </button></a></li>
               </ul>
             </div>
           </li>
@@ -244,7 +244,13 @@
     </div>
   </footer>
 
-  {% block js %}{% endblock js %}
+  {% block js %}
+
+  {% endblock js %}
+
+  <script>
+    document.getElementById("cartLen").innerHTML = localStorage.getItem("lenth");
+</script>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

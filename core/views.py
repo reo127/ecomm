@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib import messages
-from django.template import RequestContext
 
 
 def home(request):
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
-    params = {"AllProd": AllProds, 'cats': cats}
+    cartLenth = Cart.objects.filter(belongsTo = request.user).count()
+    params = {"AllProd": AllProds, 'cats': cats, "cartLenth": cartLenth}
     return render(request, 'core/index.html', params)
 
 
@@ -28,7 +28,9 @@ def cartHandle(request):
         return HttpResponseRedirect('/')
 
 def cart(request):
-    return render(request, "core/cart.html")
+    cartProd = Cart.objects.filter(belongsTo = request.user)
+    params = {"prod": cartProd}
+    return render(request, "core/cart.html", params)
 
 def catagory(request, cataNmae):
     AllProds = Product.objects.filter(category=cataNmae)
