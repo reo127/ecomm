@@ -11,26 +11,34 @@ def home(request):
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
-    cartLenth = Cart.objects.filter(belongsTo = request.user).count()
+    if request.user.is_authenticated:
+        cartLenth = Cart.objects.filter(belongsTo = request.user).count()
+    else:
+        cartLenth = 0
+
     params = {"AllProd": AllProds, 'cats': cats, "cartLenth": cartLenth}
     return render(request, 'core/index.html', params)
 
 
 def cartHandle(request):
-    if request.method == "POST":
-        originalId = request.POST['prodId']
-        product_name = request.POST['prodName']
-        price = request.POST['prodPrice']
-        belongsTo = request.POST['belongsTo']
-        Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=request.user)
-        print(originalId, price, product_name, belongsTo)
-        messages.success(request, f"{product_name} is added to your cart")
-        return HttpResponseRedirect('/')
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            originalId = request.POST['prodId']
+            product_name = request.POST['prodName']
+            price = request.POST['prodPrice']
+            # belongsTo = request.POST['belongsTo']
+            Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=request.user)
+            messages.success(request, f"{product_name} is added to your cart")
+            return HttpResponseRedirect('/')
 
 def cart(request):
-    cartProd = Cart.objects.filter(belongsTo = request.user)
-    params = {"prod": cartProd}
-    return render(request, "core/cart.html", params)
+    if request.user.is_authenticated:
+        cartProd = Cart.objects.filter(belongsTo = request.user)
+        params = {"prod": cartProd}
+        return render(request, "core/cart.html", params)
+    else:
+        return render(request, "core/cart.html")
+
 
 def catagory(request, cataNmae):
     AllProds = Product.objects.filter(category=cataNmae)
