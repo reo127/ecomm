@@ -39,9 +39,12 @@
 
     <!-- Catagory start hare -->
     <div class="catagori">
-        {% for i in cats %}
-            <a href="catagory/{{i}}"><img src="{% static 'images/1.jpg' %}"><center>{{i}}</center></a>
-        {% endfor %}
+
+            <a href="catagory/electronics"><img src="{% static 'images/ele.png' %}"><p></p><center>Electronics</center></a>
+            <a href="catagory/toy"><img src="{% static 'images/toysCatagory.jpg' %}"><p></p><center>Toys</center></a>
+            <a href="catagory/home_appliances"><img src="{% static 'images/homeApplancesCatagory.jpg' %}"><p></p><center>Home appliances</center></a>
+            <a href="catagory/Book"><img src="{% static 'images/booksCatagory.jpg' %}"><p></p><center>Book</center></a>
+
     </div>
 
     <!-- Products ariya start hare -->
@@ -67,7 +70,6 @@
                             <input type="hidden" name="prodId" value="{{products.id}}">
                             <input type="hidden" name="prodName" value="{{products.product_name}}">
                             <input type="hidden" name="prodPrice" value="{{products.price}}">
-                            <input type="hidden" name="belongsTo" value="{{user|title}}">
 
                             <button type="submit"  class="btn btn-success my-3 ms-4">Add to Cart</button>
                         </form>

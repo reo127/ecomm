@@ -11,6 +11,7 @@ def home(request):
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
+    print(cats)
     if request.user.is_authenticated:
         cartLenth = Cart.objects.filter(belongsTo = request.user).count()
     else:
@@ -26,7 +27,6 @@ def cartHandle(request):
             originalId = request.POST['prodId']
             product_name = request.POST['prodName']
             price = request.POST['prodPrice']
-            # belongsTo = request.POST['belongsTo']
             Cart.objects.create(originalId=originalId, product_name=product_name, price=price, belongsTo=request.user)
             messages.success(request, f"{product_name} is added to your cart")
             return HttpResponseRedirect('/')
