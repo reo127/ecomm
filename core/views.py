@@ -11,7 +11,6 @@ def home(request):
     AllProds = Product.objects.all()
     cata = Product.objects.values('category', 'id')
     cats = {item['category'] for item in cata}
-    print(cats)
     if request.user.is_authenticated:
         cartLenth = Cart.objects.filter(belongsTo = request.user).count()
     else:
