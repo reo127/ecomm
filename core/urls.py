@@ -12,6 +12,7 @@ urlpatterns = [
     path('login', views.login, name="login"),
     path('singup', views.singup, name="singup"),
     path('singout', views.singout, name="singout"),
+    path('delectCart/<int:sno>', views.delectCart, name="delectCart"),
     path('orderHandle/<int:sno>', views.orderHandle, name="orderHandle"),
 ]
 

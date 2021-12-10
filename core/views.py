@@ -31,6 +31,12 @@ def cartHandle(request):
             messages.success(request, f"{product_name} is added to your cart")
             return HttpResponseRedirect('/')
 
+def delectCart(request, sno):
+    cartProd = Cart.objects.filter(originalId = sno).delete()
+    messages.success(request, "Product is remove from your Cart")
+    return HttpResponseRedirect('/cart')
+
+
 def cart(request):
     if request.user.is_authenticated:
         cartProd = Cart.objects.filter(belongsTo = request.user)
