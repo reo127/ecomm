@@ -63,6 +63,7 @@
                         <h2 class="text-gray-900 title-font text-lg font-medium">{{products.product_name}}</h2>
                         <p class="mt-1">{{products.price}}</p>
                     </div>
+                   <div class="flex">
                     <a href="product/{{products.id}}"><button class="btn btn-primary my-3">View</button></a>
                     {% if user.is_authenticated %}
                         <form action="/cartHandle/" method="post">
@@ -74,6 +75,7 @@
                             <button type="submit"  class="btn btn-success my-3 ms-4">Add to Cart</button>
                         </form>
                     {% endif %}
+                   </div>
                 </div>
                 {% endfor %}
                 

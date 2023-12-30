@@ -109,6 +109,7 @@ def singup(request):
         phone = request.POST['phone']
         password = request.POST['password']
         confromPassword = request.POST['confromPassword']
+        print("hare is camignnn........................")
 
         if password == confromPassword:
             user = User.objects.create_user(username, email, password)
