@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-z$&6v_)x@&tmubf3-xqc&qydic*v60*fij_*92@^@(kmx_sva2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost'] # Allow *.vercel.app
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ".now.sh"]
 
 
 # Application definition
@@ -141,6 +141,6 @@ MEDIA_URL="/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "ui/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "ui/staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
